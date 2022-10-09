@@ -9,6 +9,12 @@ gpg --default-new-key-algo rsa4096 --gen-key
 read -p "Type in your newly generated pubkey:" pubkey
 pass init $pubkey
 
+# install npm
+sudo apt install -y npm
+sudo npm cache clean -f
+sudo npm install -g n # https://github.com/tj/n
+sudo n stable
+
 # download nvim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
