@@ -5,16 +5,15 @@ read -p "After you've installed it, press ENTER"
 git-credential-manager-core configure
 sudo apt install -y pass
 git config --global credential.credentialStore gpg
-
 gpg --default-new-key-algo rsa4096 --gen-key
 read -p "Type in your newly generated pubkey:" pubkey
 pass init $pubkey
 
 # download nvim
-cd ~
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
-echo 'alias nvim="~/nvim.appimage"' >> ~/.bashrc
+sudo mv nvim.appimage /usr/local/bin/nvim
+git config --global core.editor "nvim"
 
 # install packer
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
